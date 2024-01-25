@@ -9,6 +9,8 @@ ENV REACT_APP_BACKEND_URL=http://localhost:3000
 
 RUN npm run build
 
+RUN CI=true npm test
+
 FROM nginx:1.20-alpine
 # COPY the directory build from build-stage to /usr/share/nginx/html
 # The target location here was found from the Docker hub page
