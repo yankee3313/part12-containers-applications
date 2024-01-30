@@ -1,6 +1,19 @@
 version: '3.8'
 
 services:
+  server:
+    image: todo-backend-dev
+    build:
+      context: . # The context will pick this directory as the "build context"
+      dockerfile: dev.Dockerfile
+    volumes:
+      - ./:/usr/src/app
+    ports:
+      - 3000:3000
+    environment:
+      - REDIS_URL=redis://redis:6379
+      - MONGO_URL=mongodb://mongo:27017/the_database
+    container_name: todo-backend-dev
   mongo:
     image: mongo
     ports:
@@ -21,4 +34,4 @@ services:
     command: ['redis-server', '--appendonly', 'yes']
 volumes:
   mongo_data:
-  redis-data:
+  redis_data:
