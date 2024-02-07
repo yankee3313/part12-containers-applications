@@ -5,9 +5,12 @@ const TodoList = ({ todos, deleteTodo, completeTodo }) => {
   
   return (
     <>
-      {todos.map(todo => (
+      {todos.map((todo, index) => (
+        <React.Fragment key={index}>
         <Todo todo={todo} deleteTodo={deleteTodo} completeTodo={completeTodo} />
-      )).reduce((acc, cur) => [...acc, <hr />, cur], [])}
+        <hr/>
+        </React.Fragment>
+      ))}
     </>
   )
 }

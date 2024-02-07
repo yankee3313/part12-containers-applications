@@ -2,11 +2,12 @@ FROM node:16
 
 WORKDIR /usr/src/app
 
-COPY --chown=node:node . .
+COPY ./package.json ./
 
-# Change npm ci to npm install since we are going to be in development mode
 RUN npm install
 
-# npm start is the command to start the application in development mode
+COPY --chown=node:node . .
+
 USER node
-CMD npm start
+
+CMD ["npm", "run", "dev"]

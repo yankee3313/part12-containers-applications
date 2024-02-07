@@ -1,5 +1,7 @@
 services:
   app:
+    debug-helper:
+        image: busybox
     image: todo-frontend-dev
     build:
       context: . # The context will pick this directory as the "build context"

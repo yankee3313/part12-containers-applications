@@ -1,11 +1,11 @@
-FROM node:16
+FROM node:16 AS build-stage
 
 WORKDIR /usr/src/app
 
-COPY . .
+COPY ./package.json ./
 
-# Change npm ci to npm install since we are going to be in development mode
 RUN npm install
 
-# npm start is the command to start the application in development mode
-CMD ["npm", "start"]
+COPY . .
+
+CMD ["npm", "run", "start"]
